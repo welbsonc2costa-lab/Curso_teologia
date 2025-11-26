@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Inscrição - Formação em Teologia</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta de cores do tema "e-inscrição" */
+            --primary-purple-start: #6200ea;
+            --primary-purple-end: #9046fe;
+            --accent-cyan: #00dac0;
+            --accent-cyan-hover: #00c4ac;
+            --bg-color: #f4f6f9;
+            --text-color: #333;
+            --text-light: #555;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* --- CABEÇALHO --- */
+        header {
+            background: linear-gradient(90deg, var(--primary-purple-start) 0%, var(--primary-purple-end) 100%);
+            padding: 20px 0 120px 0; /* Espaço extra embaixo para o card sobrepor */
+            color: white;
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: -0.5px;
+        }
+        
+        .brand-logo span { color: var(--accent-cyan); }
+
+        /* --- CONTAINER PRINCIPAL (CARTÃO) --- */
+        .container {
+            max-width: 1100px; /* Aumentado para caber duas colunas */
+            width: 92%;
+            margin: -80px auto 40px auto; /* Sobe sobre o header */
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 10;
+        }
+
+        h2.main-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            color: #2d3748;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* --- LAYOUT DE DUAS COLUNAS --- */
+        .main-content-wrapper {
+            display: flex;
+            gap: 50px; /* Espaço entre as colunas */
+            align-items: flex-start;
+        }
+
+        .info-column {
+            flex: 1 1 55%; /* Ocupa 55% do espaço */
+        }
+
+        .form-column {
+            flex: 1 1 45%; /* Ocupa 45% do espaço */
+            /* Opcional: adicionar um fundo leve ou borda na coluna do form para destacar */
+            /* background: #f9f9f9; padding: 20px; border-radius: 8px; */
+        }
+
+        /* --- ESTILOS DA COLUNA DE INFORMAÇÃO (ESQUERDA) --- */
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            color: #2d3748;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        h3:first-child { margin-top: 0; }
+
+        .info-text { color: var(--text-light); margin-bottom: 20px; }
+
+        ul.module-list {
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        ul.module-list li {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        ul.module-list li strong {
+            color: var(--primary-purple-start);
+        }
+
+        /* Caixa de Atenção Amarela */
+        .attention-box {
+            background-color: #fffbea; /* Amarelo claro */
+            border: 1px solid #fceda2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            color: #744210;
+            font-size: 15px;
+        }
+        .attention-box strong { color: #975a16; }
+
+
+        /* --- ESTILOS DO FORMULÁRIO (DIREITA) --- */
+        /* Iframe do Google Forms */
+        iframe {
+            width: 100%;
+            /* Ajustei a altura para 850px para tentar equilibrar com o texto ao lado, 
+               mas se o formulário for longo, pode precisar ser maior */
+            height: 850px; 
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Formulário Fallback (Nativo) */
+        .fallback {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .alert-box {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            font-size: 16px;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        form input:focus, form select:focus, form textarea:focus {
+            outline: none;
+            border-color: var(--primary-purple-end);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(144, 70, 254, 0.1);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--accent-cyan);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 218, 192, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            background-color: var(--accent-cyan-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 218, 192, 0.3);
+        }
+
+        /* --- RESPONSIVIDADE (MOBILE) --- */
+        @media (max-width: 850px) {
+            header { padding-bottom: 60px; }
+            
+            .container {
+                width: 95%;
+                margin-top: -30px;
+                padding: 25px;
+            }
+
+            h2.main-title { font-size: 24px; margin-bottom: 20px; }
+
+            /* Transforma as colunas em pilha no mobile */
+            .main-content-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .info-column, .form-column {
+                width: 100%; /* Ocupam largura total no mobile */
+            }
+
+            /* No mobile, o iframe precisa ser mais alto pois o Google Forms quebra mais linhas */
+            iframe { height: 1100px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <script>
+        function formError() {
+            document.getElementById("fallback-form").style.display = "block";
+            document.getElementById("gform").style.display = "none";
+        }
+
+        window.addEventListener("message", (e) => {
+            if (typeof e.data === "string" && (e.data.includes("404") || e.data.includes("error"))) {
+                formError();
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="brand-logo">e-<span>inscrição</span></div>
+            <div style="font-weight: 600; opacity: 0.9; font-size: 14px;">Formação Ministerial</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="main-title">Inscrição - Curso de Teologia</h2>
+
+        <div class="main-content-wrapper">
+
+            <div class="info-column">
+                <h3>Conteúdo programático</h3>
+                <p class="info-text">Abaixo estão os módulos que serão abordados durante o curso.</p>
+                
+                <ul class="module-list">
+                    <li><strong>Módulo 1</strong> — Introdução à Teologia e Métodos de Estudo Bíblico</li>
+                    <li><strong>Módulo 2</strong> — Doutrina de Deus (Teologia própria)</li>
+                    <li><strong>Módulo 3</strong> — Doutrina de Cristo (Cristologia)</li>
+                    <li><strong>Módulo 4</strong> — Doutrina do Espírito Santo (Pneumatologia)</li>
+                    <li><strong>Módulo 5</strong> — Doutrina da Salvação (Soteriologia)</li>
+                    <li><strong>Módulo 6</strong> — Panorama Bíblico e Hermenêutica</li>
+                    <li><strong>Módulo 7</strong> — Vida Cristã e Discipulado</li>
+                    <li><strong>Módulo 8</strong> — Ética Cristã e Missão</li>
+                </ul>
+
+                <h3>Informações adicionais</h3>
+                <p class="info-text">
+                    <strong>Início previsto:</strong> 01 de Março de 2026<br>
+                    <strong>Local:</strong> Igreja Exemplo / Aulas online ao vivo
+                </p>
+
+                <h3>Instrutor</h3>
+                <p class="info-text">
+                    <strong>Pr. Fulano de Tal</strong> — Formação em Teologia, com experiência em ensino ministerial.
+                </p>
+
+                <div class="attention-box">
+                    <strong>Atenção:</strong> As vagas são limitadas. Garanta sua inscrição preenchendo o formulário ao lado.
+                </div>
+            </div>
+
+            <div class="form-column">
+                
+                <div id="gform">
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSdrW1rfGcuSGLTzAu_d_y2xFsrkomigzqA8WV4FHaPh-aBxTQ/viewform?embedded=true"
+                        onerror="formError()">
+                        Carregando…
+                    </iframe>
+                </div>
+
+                <div class="fallback" id="fallback-form">
+                    <div class="alert-box">
+                        ⚠ O formulário automático não carregou. Por favor, preencha seus dados abaixo:
+                    </div>
+
+                    <form action="https://formsubmit.co/exemplo@igreja.org" method="POST">
+                        <label>Nome completo</label>
+                        <input type="text" name="nome" required>
+
+                        <label>E-mail</label>
+                        <input type="email" name="email" required>
+
+                        <label>Telefone (opcional)</label>
+                        <input type="tel" name="telefone">
+
+                        <label>Modalidade desejada</label>
+                        <select name="modalidade">
+                            <option>Presencial</option>
+                            <option>Online ao vivo</option>
+                        </select>
+
+                        <label>Turma</label>
+                        <select name="turma">
+                            <option>Manhã (terças e quintas)</option>
+                            <option>Noite (segundas e quartas)</option>
+                        </select>
+
+                        <label>Observações</label>
+                        <textarea name="obs" rows="4" placeholder="Ex.: Prefiro aulas às terças..."></textarea>
+
+                        <button type="submit">Enviar Inscrição</button>
+                    </form>
+                </div>
+            </div>
+            </div> </div> </body>
+</html>
