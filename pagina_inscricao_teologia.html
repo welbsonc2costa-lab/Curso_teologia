@@ -3,218 +3,181 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <title>Formulário de Inscrição</title>
+    <title>Inscrição - Formação</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Cores baseadas na identidade visual "e-inscrição" */
-            --primary-purple: #6200ea;
-            --secondary-purple: #9046fe;
-            --accent-cyan: #00dac0;
+            /* Cores extraídas da identidade visual da imagem */
+            --primary-purple-start: #6200ea; /* Roxo escuro */
+            --primary-purple-end: #9046fe;   /* Roxo mais claro */
+            --accent-cyan: #00dac0;          /* Verde água do botão */
             --accent-cyan-hover: #00c4ac;
-            --bg-color: #f0f2f5;
-            --text-dark: #333;
-            --text-light: #666;
+            --bg-color: #f4f6f9;
+            --text-color: #333;
+            --card-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
 
-        /* Reset básico para garantir consistência entre navegadores */
-        * {
-            box-sizing: border-box;
-        }
+        /* Reset básico */
+        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Open Sans', sans-serif;
-            background: var(--bg-color);
             margin: 0;
             padding: 0;
-            color: var(--text-dark);
+            font-family: 'Open Sans', sans-serif; /* Fonte do corpo */
+            background: var(--bg-color);
+            color: var(--text-color);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased; /* Texto mais nítido no Mac/iOS */
         }
 
-        /* --- CABEÇALHO --- */
+        /* --- CABEÇALHO (Estilo e-inscrição) --- */
         header {
-            background: linear-gradient(90deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+            background: linear-gradient(90deg, var(--primary-purple-start) 0%, var(--primary-purple-end) 100%);
+            padding: 20px 0 100px 0; /* Padding inferior grande para o cartão "entrar" no header */
             color: white;
-            padding: 40px 0 80px 0; /* Espaço extra embaixo para o card "entrar" */
-            box-shadow: 0 4px 12px rgba(98, 0, 234, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .header-content {
-            max-width: 900px;
-            margin: auto;
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 0 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .logo {
+        .brand-logo {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 24px;
             letter-spacing: -0.5px;
         }
+        
+        .brand-logo span { color: var(--accent-cyan); }
 
-        .logo span {
-            color: var(--accent-cyan);
-        }
-
-        .header-tag {
-            font-size: 14px;
-            font-weight: 600;
-            background: rgba(255,255,255,0.2);
-            padding: 5px 12px;
-            border-radius: 20px;
-        }
-
-        /* --- CONTAINER PRINCIPAL (CARD) --- */
+        /* --- CONTAINER PRINCIPAL (CARTÃO) --- */
         .container {
+            max-width: 800px;
             width: 90%; /* Ocupa 90% da tela no mobile */
-            max-width: 800px; /* Trava em 800px no PC */
-            margin: -50px auto 40px auto; /* Margem negativa para subir no header */
+            margin: -60px auto 40px auto; /* Margem negativa sobe o card sobre o header */
             background: white;
             padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
             position: relative;
             z-index: 10;
         }
 
         h2 {
             font-family: 'Poppins', sans-serif;
-            color: var(--primary-purple);
-            margin-top: 0;
             font-size: 28px;
+            color: #2d3748;
+            margin-top: 0;
+            margin-bottom: 25px;
             text-align: center;
-            margin-bottom: 30px;
+            font-weight: 700;
         }
 
-        /* --- FORMULÁRIO FALLBACK (ESTILOS) --- */
+        /* --- IFRAME DO GOOGLE FORMS --- */
+        iframe {
+            width: 100%;
+            height: 1000px; /* Altura alta para evitar scroll duplo no mobile */
+            border: none;
+        }
+
+        /* --- FORMULÁRIO FALLBACK (Estilo Moderno) --- */
         .fallback {
-            display: none;
-            margin-top: 25px;
-            animation: fadeIn 0.5s ease-in-out;
+            display: none; /* Só aparece se der erro no iframe */
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
         }
 
         .alert-box {
-            font-family: 'Poppins', sans-serif;
-            color: #854d0e;
-            background: #fef3c7;
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            color: #856404;
             padding: 15px;
-            border-radius: 8px;
-            border-left: 5px solid #f59e0b;
-            font-size: 15px;
+            border-radius: 4px;
             margin-bottom: 25px;
-            line-height: 1.5;
+            font-size: 14px;
         }
 
         form label {
             display: block;
-            font-weight: 600;
             margin-bottom: 8px;
-            color: #444;
+            font-weight: 600;
+            color: #4a5568;
             font-size: 14px;
         }
 
         form input, form select, form textarea {
             width: 100%;
-            padding: 14px 15px; /* Padding maior para facilitar o toque no celular */
+            padding: 12px 15px;
             margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            background-color: #f9f9f9;
+            background-color: #f8fafc;
+            font-size: 16px; /* 16px evita zoom automático no iPhone */
             font-family: inherit;
-            font-size: 16px; /* Tamanho 16px evita zoom automático no iPhone */
-            transition: all 0.3s ease;
-            appearance: none; /* Remove estilo padrão do sistema operacional */
-            -webkit-appearance: none;
+            transition: 0.3s;
         }
 
         form input:focus, form select:focus, form textarea:focus {
             outline: none;
-            border-color: var(--secondary-purple);
-            background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(144, 70, 254, 0.15);
+            border-color: var(--primary-purple-end);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(144, 70, 254, 0.1);
         }
 
         button {
-            background: var(--accent-cyan);
-            color: white;
-            padding: 16px 30px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            transition: transform 0.2s, background-color 0.2s;
             width: 100%;
-            display: block;
-            box-shadow: 0 4px 15px rgba(0, 218, 192, 0.3);
-            margin-top: 10px;
+            background-color: var(--accent-cyan);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 15px;
+            border: none;
+            border-radius: 50px; /* Botão arredondado estilo moderno */
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 218, 192, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         button:hover {
             background-color: var(--accent-cyan-hover);
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 218, 192, 0.3);
         }
 
-        button:active {
-            transform: translateY(0);
-        }
-
-        .contact-info {
-            text-align: center;
-            margin-top: 30px;
-            color: var(--text-light);
-            font-size: 14px;
-            line-height: 1.6;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-
-        .contact-info strong {
-            color: var(--primary-purple);
-        }
-
-        /* --- RESPONSIVIDADE (MOBILE) --- */
+        /* --- RESPONSIVIDADE (Mobile) --- */
         @media (max-width: 600px) {
             header {
-                padding: 30px 0 60px 0; /* Reduz altura do header */
+                padding-bottom: 60px; /* Menos espaço no mobile */
             }
 
             .container {
-                width: 95%; /* Quase largura total */
-                margin-top: -40px; /* Sobe um pouco menos */
-                padding: 25px 20px; /* Menos padding interno */
+                width: 95%; /* Card mais largo no mobile */
+                margin-top: -30px;
+                padding: 20px; /* Menos padding interno */
             }
 
             h2 {
-                font-size: 22px;
-                margin-bottom: 20px;
+                font-size: 22px; /* Título menor */
             }
 
-            .header-content {
-                flex-direction: row; /* Mantém logo e tag na mesma linha */
-            }
-
-            .logo {
+            .brand-logo {
                 font-size: 20px;
             }
 
-            .header-tag {
-                font-size: 12px;
-                padding: 4px 10px;
-            }
-
-            /* Ajuste para o Iframe do Google no mobile */
             iframe {
-                height: 1100px; /* Aumenta a altura pois o form fica mais comprido no mobile */
+                height: 1100px; /* Google forms costuma ficar mais comprido no celular */
             }
         }
 
@@ -230,20 +193,21 @@
             document.getElementById("gform").style.display = "none";
         }
 
-        // Monitora mensagens de erro (ex: X-Frame-Options) ou 404
         window.addEventListener("message", (e) => {
+            // Detecta erros de carregamento ou 404
             if (typeof e.data === "string" && (e.data.includes("404") || e.data.includes("error"))) {
                 formError();
             }
         });
     </script>
 </head>
+
 <body>
 
     <header>
         <div class="header-content">
-            <div class="logo">e-<span>inscrição</span></div>
-            <div class="header-tag">Evento 2024</div>
+            <div class="brand-logo">e-<span>inscrição</span></div>
+            <div style="font-weight: 600; opacity: 0.9; font-size: 14px;">Área do Participante</div>
         </div>
     </header>
 
@@ -253,54 +217,45 @@
 
         <div id="gform">
             <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSdrW1rfGcuSGLTzAu_d_y2xFsrkomigzqA8WV4FHaPh-aBxTQ/viewform?embedded=true" 
-                width="100%" 
-                height="900" 
-                frameborder="0"
-                marginheight="0" 
-                marginwidth="0"
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdrW1rfGcuSGLTzAu_d_y2xFsrkomigzqA8WV4FHaPh-aBxTQ/viewform?embedded=true"
                 onerror="formError()">
-            Carregando…
+                Carregando…
             </iframe>
         </div>
 
         <div class="fallback" id="fallback-form">
             <div class="alert-box">
-                ⚠ O formulário automático não carregou. Por favor, preencha seus dados abaixo para garantir sua vaga.
+                ⚠ Não foi possível carregar o formulário automático. Por favor, preencha seus dados abaixo:
             </div>
 
             <form action="https://formsubmit.co/exemplo@igreja.org" method="POST">
+
                 <label>Nome completo</label>
-                <input type="text" name="nome" placeholder="Seu nome" required>
+                <input type="text" name="nome" placeholder="Digite seu nome completo" required>
 
                 <label>E-mail</label>
                 <input type="email" name="email" placeholder="seu@email.com" required>
 
-                <label>Telefone (WhatsApp)</label>
-                <input type="tel" name="telefone" placeholder="(00) 00000-0000">
+                <label>Telefone (opcional)</label>
+                <input type="tel" name="telefone" placeholder="(DD) 99999-9999">
 
-                <label>Modalidade</label>
+                <label>Modalidade desejada</label>
                 <select name="modalidade">
                     <option>Online</option>
                     <option>Presencial</option>
                 </select>
 
-                <label>Turma de preferência</label>
+                <label>Turma</label>
                 <select name="turma">
                     <option>Sábado intensivo</option>
                     <option>Domingo regular</option>
                 </select>
 
                 <label>Observações</label>
-                <textarea name="obs" rows="3" placeholder="Alguma necessidade especial?"></textarea>
+                <textarea name="obs" rows="4" placeholder="Alguma observação importante?"></textarea>
 
-                <button type="submit">Confirmar Inscrição</button>
+                <button type="submit">Enviar Inscrição</button>
             </form>
-
-            <div class="contact-info">
-                Dúvidas? Envie um e-mail para:<br>
-                <strong>exemplo@igreja.org</strong>
-            </div>
         </div>
 
     </div>
