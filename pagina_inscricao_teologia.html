@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscrições — Curso de Teologia Básica</title>
+  <style>
+    :root{--bg:#f6f7fb;--card:#ffffff;--accent:#1f6feb;--muted:#666}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:var(--bg); color:#111}
+    .container{max-width:900px;margin:28px auto;padding:20px}
+    header{display:flex;gap:20px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6cc6ff);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(13,38,59,0.06)}
+    h1{margin:0;font-size:1.6rem}
+    p.lead{color:var(--muted);margin-top:8px}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:18px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr}}
+    .programa ul{padding-left:1.1rem}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;color:var(--muted)}
+    label{display:block;font-weight:600;margin-bottom:6px}
+    input,textarea,select{width:100%;padding:10px;border:1px solid #e6e9ef;border-radius:8px;font-size:0.95rem}
+    textarea{min-height:100px;resize:vertical}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:white;border:0;font-weight:700;cursor:pointer}
+    .muted{color:var(--muted);font-size:0.95rem}
+    .success{background:#e6ffed;border-left:4px solid #2ea44f;padding:10px;border-radius:8px;color:#064e2a}
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:0.9rem}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">CT</div>
+      <div>
+        <h1>Curso de Teologia Básica</h1>
+        <p class="lead">Introdução aos fundamentos bíblicos e doutrinários — ideal para novos convertidos e membros que desejam aprofundar a fé.</p>
+        <div class="meta">Carga horária: <strong>40 horas</strong> • Duração: <strong>8 semanas</strong> • Modalidade: <strong>Presencial / Online</strong></div>
+      </div>
+    </header>
+
+    <div style="height:16px"></div>
+
+    <div class="grid">
+      <main class="card programa">
+        <h2>Conteúdo programático</h2>
+        <p class="muted">Abaixo estão os módulos que serão abordados durante o curso.</p>
+        <ul>
+          <li><strong>Módulo 1</strong> — Introdução à Teologia e Métodos de Estudo Bíblico</li>
+          <li><strong>Módulo 2</strong> — Doutrina de Deus (Teologia própria)</li>
+          <li><strong>Módulo 3</strong> — Doutrina de Cristo (Cristologia)</li>
+          <li><strong>Módulo 4</strong> — Doutrina do Espírito Santo (Pneumatologia)</li>
+          <li><strong>Módulo 5</strong> — Doutrina da Salvação (Soteriologia)</li>
+          <li><strong>Módulo 6</strong> — Panorama Bíblico e Hermenêutica</li>
+          <li><strong>Módulo 7</strong> — Vida Cristã e Discipulado</li>
+          <li><strong>Módulo 8</strong> — Ética Cristã e Missão</li>
+        </ul>
+
+        <h3 style="margin-top:16px">Informações adicionais</h3>
+        <p class="muted">Início previsto: <strong>01 de Março de 2026</strong><br>Local: <strong>Igreja Exemplo / Aulas online ao vivo</strong></p>
+
+        <h3 style="margin-top:16px">Instrutor</h3>
+        <p class="muted">Pr. Fulano de Tal — Formação em Teologia, com experiência em ensino ministerial.</p>
+
+        <div style="height:14px"></div>
+
+        <div class="card" style="background:#fff8e6;border:1px solid #f1e1b8">
+          <strong>Atenção:</strong> As vagas são limitadas. Garanta sua inscrição preenchendo o formulário ao lado.
+        </div>
+      </main>
+
+      <aside class="card">
+        <h2>Inscreva-se</h2>
+        <p class="muted">Preencha seus dados abaixo. O envio fará a inscrição e você receberá um e-mail de confirmação (se estiver configurado).</p>
+
+        <!--
+          SUBSTITUA o atributo `action` do <form> pelo endpoint do seu serviço de formulários:
+          - Google Forms: cole a URL de envio (action) gerada pelo Google Forms
+          - Formspree: https://formspree.io/f/YOUR_FORM_ID
+          - Seu backend: https://seu-dominio.com/inscricoes
+        -->
+
+        <form id="inscricaoForm" action="https://formspree.io/f/your-form-id" method="POST">
+          <label for="nome">Nome completo</label>
+          <input id="nome" name="nome" required />
+
+          <label for="email">E‑mail</label>
+          <input id="email" name="email" type="email" required />
+
+          <label for="telefone">Telefone (opcional)</label>
+          <input id="telefone" name="telefone" />
+
+          <label for="modalidade">Modalidade desejada</label>
+          <select id="modalidade" name="modalidade">
+            <option value="presencial">Presencial</option>
+            <option value="online">Online</option>
+            <option value="hibrido">Híbrido</option>
+          </select>
+
+          <label for="turma">Turma</label>
+          <select id="turma" name="turma">
+            <option value="manha">Manhã (terças e quintas)</option>
+            <option value="noite">Noite (segundas e quartas)</option>
+            <option value="sabado">Sábado intensivo</option>
+          </select>
+
+          <label for="mensagem">Observações</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Ex.: Prefiro aulas às terças..."></textarea>
+
+          <div style="height:12px"></div>
+
+          <button class="btn" type="submit">Enviar inscrição</button>
+        </form>
+
+        <div id="status" style="margin-top:12px"></div>
+
+        <script>
+          // Script simples para tratar o envio via fetch (se o endpoint suportar CORS/JSON)
+          const form = document.getElementById('inscricaoForm');
+          const statusEl = document.getElementById('status');
+
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            statusEl.innerHTML = 'Enviando...';
+
+            // Leia os dados do formulário
+            const data = new FormData(form);
+
+            // Se você usar Formspree ou similar, o envio direto por fetch pode funcionar.
+            // Caso contrário, substitua `action` por uma URL do seu backend ou serviço de formulário.
+            const action = form.action;
+
+            try {
+              const res = await fetch(action, {
+                method: form.method || 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+              });
+
+              if (res.ok) {
+                statusEl.innerHTML = '<div class="success">Inscrição recebida! Em breve entraremos em contato.</div>';
+                form.reset();
+              } else {
+                const text = await res.text();
+                statusEl.innerHTML = '<div class="muted">O envio falhou. Verifique a configuração do formulário. (' + res.status + ')</div>';
+                console.error('Form error', res.status, text);
+              }
+            } catch (err) {
+              console.error(err);
+              statusEl.innerHTML = '<div class="muted">Erro ao enviar. Se preferir, envie sua inscrição pelo e-mail: exemplo@igreja.org</div>';
+            }
+          });
+        </script>
+
+        <div style="height:12px"></div>
+        <p class="muted">Ou acesse o link direto: <a href="#" id="link-inscricao">https://seudominio.com/inscricao</a></p>
+      </aside>
+    </div>
+
+    <footer>
+      Página gerada por: Curso de Teologia Básica • Modifique o conteúdo trocando textos e o atributo `action` do formulário.
+    </footer>
+  </div>
+</body>
+</html>
