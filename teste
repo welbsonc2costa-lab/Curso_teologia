@@ -34,7 +34,7 @@
             line-height: 1.6;
         }
 
-        /* --- CABEÇALHO (NOVA NAVEGAÇÃO COMPLETA) --- */
+        /* --- CABEÇALHO (NAV BAR COMPLETA) --- */
         header {
             background: linear-gradient(90deg, var(--primary-purple-start) 0%, var(--primary-purple-end) 100%);
             padding: 10px 0 100px 0; /* Padding inferior grande para o card sobrepor */
@@ -49,7 +49,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap; /* Garante quebras no mobile */
+            flex-wrap: wrap; 
         }
 
         /* Logo e Nome da Instituição */
@@ -82,7 +82,7 @@
             gap: 30px;
         }
 
-        nav a {
+        nav a:not(.action-button) { /* Estilo para links normais */
             color: white;
             text-decoration: none;
             font-weight: 600;
@@ -91,7 +91,7 @@
             transition: opacity 0.2s;
         }
 
-        nav a:hover {
+        nav a:not(.action-button):hover {
             opacity: 1;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
         }
@@ -109,6 +109,7 @@
             transition: all 0.2s;
             border: none;
             cursor: pointer;
+            text-decoration: none; /* Adicionado para links */
         }
 
         .action-button:hover {
@@ -116,7 +117,7 @@
             transform: translateY(-1px);
         }
 
-        /* --- CONTAINER PRINCIPAL (CARTÃO) - SEM ALTERAÇÕES DE LAYOUT --- */
+        /* --- CONTAINER PRINCIPAL (CARTÃO) --- */
         .container {
             max-width: 1100px;
             width: 92%;
@@ -189,7 +190,7 @@
         /* --- ESTILOS DO FORMULÁRIO --- */
         iframe {
             width: 100%;
-            height: 850px; 
+            height: 850px; /* Altura ajustada, pode ser necessário aumentar se o form for longo */
             border: none;
             border-radius: 8px;
         }
@@ -230,15 +231,22 @@
                 gap: 15px;
                 align-items: flex-start;
             }
+            .brand-logo-wrapper { width: 100%; justify-content: space-between; gap: 0; }
+            .institution-name { padding-left: 10px; }
+
             nav {
                 width: 100%;
                 justify-content: space-between;
                 gap: 15px;
             }
             .action-button {
-                width: 100%;
-                text-align: center;
-                margin-top: 5px;
+                /* No mobile, o botão pode ser melhor se for um link normal no menu */
+                padding: 0; 
+                background: none; 
+                box-shadow: none; 
+                color: white; 
+                font-size: 15px; 
+                text-transform: none;
             }
 
             .main-content-wrapper { flex-direction: column; gap: 30px; }
