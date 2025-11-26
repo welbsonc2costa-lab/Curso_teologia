@@ -3,144 +3,186 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inscrição - Formação em Teologia</title>
+    <title>Formulário de Inscrição</title>
 
-    <!-- Fonte moderna -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #f3f5fa;
-            --card: #ffffff;
-            --primary: #2a66ff;
-            --radius: 14px;
-            --shadow: 0 5px 30px rgba(0,0,0,0.09);
-            --text: #2a2a2a;
-        }
-
-        * {
-            box-sizing: border-box;
+            /* Paleta de cores baseada na imagem */
+            --primary-purple: #6200ea;
+            --secondary-purple: #9046fe;
+            --accent-cyan: #00dac0;
+            --accent-cyan-hover: #00c4ac;
+            --bg-color: #f7f9fc;
+            --text-dark: #333;
+            --text-light: #666;
         }
 
         body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--bg-color);
             margin: 0;
-            background: var(--bg);
-            font-family: "Inter", sans-serif;
-            color: var(--text);
-            line-height: 1.55;
+            padding: 0;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* Cabeçalho estilo "e-inscrição" */
         header {
-            background: var(--card);
-            padding: 22px 30px;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
+            background: linear-gradient(90deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(98, 0, 234, 0.2);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-cyan);
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 800px;
+            margin: -40px auto 40px auto; /* Sobe um pouco sobre o header */
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
             z-index: 10;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 22px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-        }
-
-        /* MOBILE BREAKPOINT */
-        @media (max-width: 900px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .card {
-            background: var(--card);
-            padding: 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
         h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-purple);
             margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 26px;
-            font-weight: 600;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        iframe {
-            width: 100%;
-            height: 1100px;
-            border: none;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        /* Ajuste da altura no mobile */
-        @media (max-width: 600px) {
-            iframe {
-                height: 1300px;
-            }
-        }
-
+        /* Estilo do Fallback (Formulário nativo) */
         .fallback {
             display: none;
             margin-top: 25px;
-            background: #fff7db;
-            border: 1px solid #f0da96;
-            padding: 25px;
-            border-radius: var(--radius);
+            background: #fff;
+            padding: 10px;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        label {
+        .fallback h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #d97706;
+            background: #fffbeb;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #d97706;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        form label {
             display: block;
-            margin-top: 15px;
-            margin-bottom: 6px;
-            font-weight: 500;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444;
+            font-size: 14px;
         }
 
-        input, select, textarea {
+        form input, form select, form textarea {
             width: 100%;
-            padding: 13px;
-            border-radius: var(--radius);
-            border: 1px solid #ccc;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            background-color: #f9f9f9;
+            font-family: inherit;
             font-size: 15px;
-            background: #fdfdfd;
+            transition: all 0.3s ease;
+            box-sizing: border-box; /* Garante que o padding não estoure a largura */
         }
 
-        textarea {
-            resize: vertical;
+        form input:focus, form select:focus, form textarea:focus {
+            outline: none;
+            border-color: var(--secondary-purple);
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(144, 70, 254, 0.15);
         }
 
         button {
-            margin-top: 22px;
-            background: var(--primary);
+            background: var(--accent-cyan);
             color: white;
-            padding: 15px 24px;
+            padding: 15px 30px;
             border: none;
-            border-radius: var(--radius);
-            font-size: 17px;
+            border-radius: 50px; /* Botão arredondado moderno */
             cursor: pointer;
-            transition: 0.2s ease;
-            box-shadow: 0 4px 14px rgba(42,102,255,0.35);
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            width: 100%;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0, 218, 192, 0.4);
         }
 
         button:hover {
+            background-color: var(--accent-cyan-hover);
             transform: translateY(-2px);
-            box-shadow: 0 7px 22px rgba(42,102,255,0.45);
+            box-shadow: 0 6px 20px rgba(0, 218, 192, 0.5);
         }
 
+        button:active {
+            transform: translateY(0);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .contact-info strong {
+            color: var(--primary-purple);
+        }
+
+        /* Animação suave */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 25px;
+            }
+            header {
+                padding: 15px 0;
+            }
+            h2 {
+                font-size: 24px;
+            }
+        }
     </style>
 
     <script>
@@ -149,101 +191,80 @@
             document.getElementById("gform").style.display = "none";
         }
 
+        // Detecta automaticamente erro de carregamento (ex: 404)
         window.addEventListener("message", (e) => {
             if (typeof e.data === "string" && e.data.includes("404")) {
                 formError();
             }
         });
     </script>
-</head>
 
+</head>
 <body>
 
-<header>
-    <h1>Curso de Formação em Teologia – Inscrição</h1>
-</header>
+    <header>
+        <div class="header-content">
+            <div class="logo">e-<span>inscrição</span></div>
+            <div style="font-size: 14px; font-weight: 600; opacity: 0.9;">Evento 2024</div>
+        </div>
+    </header>
 
-<div class="container">
+    <div class="container">
 
-    <div class="grid">
+        <h2>Inscrição</h2>
 
-        <!-- COLUNA 1 - Conteúdo -->
-        <div class="card">
-            <h2>Conteúdo Programático</h2>
-            <ul>
-                <li><b>Módulo 1</b> — Introdução à Teologia e Métodos de Estudo Bíblico</li>
-                <li><b>Módulo 2</b> — Doutrina de Deus</li>
-                <li><b>Módulo 3</b> — Doutrina de Cristo</li>
-                <li><b>Módulo 4</b> — Doutrina do Espírito Santo</li>
-                <li><b>Módulo 5</b> — Doutrina da Salvação</li>
-                <li><b>Módulo 6</b> — Panorama Bíblico e Hermenêutica</li>
-                <li><b>Módulo 7</b> — Vida Cristã e Discipulado</li>
-                <li><b>Módulo 8</b> — Ética Cristã e Missão</li>
-            </ul>
-
-            <h3>Informações adicionais</h3>
-            <p><b>Início previsto:</b> 01 de Março de 2026</p>
-            <p><b>Local:</b> Igreja Exemplo / Aulas online ao vivo</p>
-
-            <h3>Instrutor</h3>
-            <p>Pr. Fulano de Tal — Formação em Teologia, com experiência em ensino ministerial.</p>
-
-            <div style="background:#fff5e1; padding:20px; border-radius:var(--radius); margin-top:20px; border:1px solid #ecd7a8;">
-                <b>Atenção:</b> As vagas são limitadas. Garanta sua inscrição preenchendo o formulário ao lado.
-            </div>
+        <div id="gform">
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdrW1rfGcuSGLTzAu_d_y2xFsrkomigzqA8WV4FHaPh-aBxTQ/viewform?embedded=true" 
+                width="100%" 
+                height="900" 
+                frameborder="0"
+                marginheight="0" 
+                marginwidth="0"
+                onerror="formError()">
+            Carregando…
+            </iframe>
         </div>
 
-        <!-- COLUNA 2 - Formulário -->
-        <div class="card">
-            <h2>Inscreva-se</h2>
+        <div class="fallback" id="fallback-form">
+            <h3>⚠ O envio automático falhou. Por favor, use o formulário abaixo ⤵</h3>
 
-            <!-- GOOGLE FORMS -->
-            <div id="gform">
-                <iframe 
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSdrW1rfGcuSGLTzAu_d_y2xFsrkomigzqA8WV4FHaPh-aBxTQ/viewform?embedded=true"
-                    onerror="formError()">
-                </iframe>
+            <form action="https://formsubmit.co/exemplo@igreja.org" method="POST">
+
+                <label>Nome completo</label>
+                <input type="text" name="nome" placeholder="Digite seu nome" required>
+
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="seu@email.com" required>
+
+                <label>Telefone (opcional)</label>
+                <input type="text" name="telefone" placeholder="(00) 00000-0000">
+
+                <label>Modalidade desejada</label>
+                <select name="modalidade">
+                    <option>Online</option>
+                    <option>Presencial</option>
+                </select>
+
+                <label>Turma</label>
+                <select name="turma">
+                    <option>Sábado intensivo</option>
+                    <option>Domingo regular</option>
+                </select>
+
+                <label>Observações</label>
+                <textarea name="obs" rows="4" placeholder="Alguma observação especial?"></textarea>
+
+                <button type="submit">Enviar inscrição</button>
+            </form>
+
+            <div class="contact-info">
+                Ou envie diretamente para o e-mail: <br>
+                <strong>exemplo@igreja.org</strong>
             </div>
-
-            <!-- FALLBACK -->
-            <div class="fallback" id="fallback-form">
-                <h3>O envio falhou. Preencha aqui:</h3>
-
-                <form action="https://formsubmit.co/exemplo@igreja.org" method="POST">
-
-                    <label>Nome completo</label>
-                    <input type="text" name="nome" required>
-
-                    <label>E-mail</label>
-                    <input type="email" name="email" required>
-
-                    <label>Telefone (opcional)</label>
-                    <input type="text" name="telefone">
-
-                    <label>Modalidade desejada</label>
-                    <select name="modalidade">
-                        <option>Online</option>
-                        <option>Presencial</option>
-                    </select>
-
-                    <label>Turma</label>
-                    <select name="turma">
-                        <option>Sábado intensivo</option>
-                        <option>Domingo regular</option>
-                    </select>
-
-                    <label>Observações</label>
-                    <textarea name="obs" rows="4"></textarea>
-
-                    <button type="submit">Enviar inscrição</button>
-                </form>
-            </div>
-
         </div>
 
     </div>
-
-</div>
 
 </body>
 </html>
